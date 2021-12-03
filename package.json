@@ -1,0 +1,72 @@
+{
+  "name": "blagues-api.fr",
+  "version": "2.0.0",
+  "description": "Site officiel de Blagues-API",
+  "author": "DraftMan",
+  "license": "MIT",
+  "scripts": {
+    "nuxt:dev": "nuxt",
+    "nuxt:build": "nuxt build",
+    "nuxt:start": "nuxt start",
+    "start": "docker-compose -f ./docker-compose.yml up -d",
+    "build": "docker-compose -f ./docker-compose.yml build",
+    "down": "docker-compose -f ./docker-compose.yml down",
+    "shell": "docker exec -it blagues_api.fr bash",
+    "dev": "docker-compose -f ./docker-compose.dev.yml up",
+    "dev:build": "docker-compose -f ./docker-compose.dev.yml build",
+    "dev:down": "docker-compose -f ./docker-compose.dev.yml down",
+    "dev:shell": "docker exec -it blagues_api_dev.fr bash",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
+    "prepare": "husky install",
+    "lint": "yarn lint:js && yarn lint:style"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint",
+    "*.{css,vue}": "stylelint"
+  },
+  "dependencies": {
+    "@draftbot/nuxtjs-auth": "^5.1.2",
+    "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/device": "^2.1.0",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/svg": "^0.3.0",
+    "babel-plugin-prismjs": "^2.1.0",
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "core-js": "^3.15.1",
+    "dotenv": "^10.0.0",
+    "nuxt": "^2.15.8",
+    "prismjs": "^1.25.0",
+    "vue-lazy-hydration": "^2.0.0-beta.4"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.3",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@nuxtjs/eslint-config": "^7.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/stylelint-module": "^4.1.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.0",
+    "sass": "^1.42.1",
+    "sass-loader": "^10.1.1",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-property-sort-order-smacss": "^8.0.0",
+    "stylelint-config-recommended-vue": "^1.1.0",
+    "stylelint-config-standard-scss": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blagues-API/blagues-api.fr.git"
+  },
+  "homepage": "https://www.blagues-api.fr",
+  "bugs": {
+    "url": "https://github.com/Blagues-API/blagues-api.fr/issues"
+  }
+}
