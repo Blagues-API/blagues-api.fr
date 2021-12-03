@@ -1,16 +1,14 @@
 FROM node:17.2
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
-RUN npm ci
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN npm run nuxt:build
-
-ENV NUXT_HOST=0.0.0.0
+RUN yarn nuxt:build
 
 EXPOSE 3000
 
-CMD npm run nuxt:start
+CMD yarn nuxt:start
