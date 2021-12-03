@@ -1,0 +1,12 @@
+version: '3'
+services:
+  website:
+    container_name: blagues_api.fr
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    tty: true
+    env_file:
+      - ./.env
+    ports:
+      - 3000:3000
