@@ -95,7 +95,7 @@ export default {
 
   pwa: {
     icon: {
-      // source: './static/images/logo.png',
+      source: './static/logo.png',
       fileName: 'logo.png',
     },
     manifest: {
