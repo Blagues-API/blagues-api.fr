@@ -3,12 +3,10 @@
     <div id="api" class="block">
       <div class="flex-space top">
         <h2 class="title">API publique</h2>
-        <Selector />
       </div>
       <p>
-        L'API Rest est le meilleur moyen d'utiliser Blagues-API sans
-        dépendances, en requièrera nénanmoins plus de connaissances et de
-        prérequis.
+        L'API Rest est le meilleur moyen d'utiliser Blagues-API sans dépendances, en requièrera nénanmoins plus de
+        connaissances et de prérequis.
       </p>
     </div>
     <div id="use" class="block">
@@ -16,9 +14,8 @@
         <h3 class="title">Utilisation</h3>
       </a>
       <p class="text">
-        Différentes routes vous sont rendues disponibles afin d'adapter l'api a
-        votre projet. Les différents mots clés vous permettront de récupérer une
-        blague aléatoirement dans un thème ou type de blague spécifique.
+        Différentes routes vous sont rendues disponibles afin d'adapter l'api a votre projet. Les différents mots clés
+        vous permettront de récupérer une blague aléatoirement dans un thème ou type de blague spécifique.
       </p>
       <div class="example">
         <h5 class="language">BLAGUE ALÉATOIRE</h5>
@@ -38,11 +35,9 @@
         <h3 class="title">Utilisation avancé</h3>
       </a>
       <p class="text">
-        Parfois certains types d'humour dérangent certaines personnes, hors
-        blagues-api est une api publique qui s'est donné comme mission de
-        convenir aux tous types d'humour. C'est pour cela que nous vous offrons
-        la possibilité de filtrer les blagues et donc d'en retirer celles qui
-        font partie d'une catégorie qui ne vous convient pas.
+        Parfois certains types d'humour dérangent certaines personnes, hors blagues-api est une api publique qui s'est
+        donné comme mission de convenir aux tous types d'humour. C'est pour cela que nous vous offrons la possibilité de
+        filtrer les blagues et donc d'en retirer celles qui font partie d'une catégorie qui ne vous convient pas.
       </p>
       <div class="example">
         <h5 class="language">UTILISATION D'UN SEUL FILTRE</h5>
@@ -58,14 +53,13 @@
         <h3 class="title">Authentification</h3>
       </a>
       <p class="text">
-        L'api de blagues utilise un token d'authentification Bearer pour les
-        requêtes. Vous pouvez le gérer depuis votre profil.<br />
+        L'api de blagues utilise un token d'authentification Bearer pour les requêtes. Vous pouvez le gérer depuis votre
+        profil.<br />
         Les requêtes doivent toutes être effectuées via
-        <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>. Tous les
-        appels effectuées sans authentification ou en HTTP échoueront.<br />
+        <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>. Tous les appels effectuées sans authentification
+        ou en HTTP échoueront.<br />
         Si vous avez des difficultées à obtenir un certificat HTTPS, voici
-        <a href="https://certbot.eff.org/">Certbot</a>, un outil qui permet d'en
-        obtenir un gratuitement !
+        <a href="https://certbot.eff.org/">Certbot</a>, un outil qui permet d'en obtenir un gratuitement !
       </p>
       <div class="example">
         <pre><code class="language-bash">
@@ -78,9 +72,8 @@
         <h3 class="title">Exemple</h3>
       </a>
       <p class="text">
-        Voici un exemple sous forme de cas d'utilisation de l'api dans le cas où
-        l'on souhaite récupérer une blague aléatoirement dans le répertoire
-        toute catégorie confondue
+        Voici un exemple sous forme de cas d'utilisation de l'api dans le cas où l'on souhaite récupérer une blague
+        aléatoirement dans le répertoire toute catégorie confondue
       </p>
       <div class="example">
         <span class="language">JAVASCRIPT</span>
@@ -106,13 +99,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import Selector from '@/components/home/Selector.vue'
-
-export default {
-  components: {
-    Selector,
-  },
-}
-</script>

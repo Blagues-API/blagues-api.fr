@@ -20,6 +20,8 @@
         </p>
       </div>
 
+      <HomeSelector />
+
       <DocNode v-show="doc === 'npm'" />
       <DocPyPi v-show="doc === 'pypi'" />
       <DocAPI v-show="doc === 'api'" />
@@ -54,11 +56,12 @@ export default {
   computed: mapState(['doc']),
   watch: {
     async doc() {
-      await new Promise((resolve) => setTimeout(resolve(), 1000))
+      await this.$nextTick()
       prismjs.highlightAll()
     },
   },
-  mounted() {
+  async mounted() {
+    await this.$nextTick()
     prismjs.highlightAll()
   },
 }

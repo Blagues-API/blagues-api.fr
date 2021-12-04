@@ -3,7 +3,6 @@
     <div id="api" class="block">
       <div class="flex-space top">
         <h2 class="title">Module PyPi</h2>
-        <Selector />
       </div>
       <p>
         Le module PyPi de Blagues-API supporte l'intégralité des options présente sur l'API, il permettra d'intéragir
@@ -97,13 +96,3 @@
     </div>
   </div>
 </template>
-
-<script>
-import Selector from '@/components/home/Selector.vue'
-
-export default {
-  components: {
-    Selector,
-  },
-}
-</script>

@@ -72,18 +72,18 @@ export default {
     ApiIcon,
     DownIcon,
   },
-  async asyncData({ $axios, $config }) {
-    const joke = await $axios.$get(`/api/random`, {
-      headers: {
-        Authorization: `Bearer ${$config.apiToken}`,
-      },
-    })
-    return { joke }
-  },
   data() {
     return {
       jokesTypes,
+      joke: null,
     }
+  },
+  async fetch() {
+    this.joke = await this.$axios.$get(`/api/random`, {
+      headers: {
+        Authorization: `Bearer ${this.$config.apiToken}`,
+      },
+    })
   },
   methods: {
     async rerollJoke() {

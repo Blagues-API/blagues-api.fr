@@ -3,12 +3,10 @@
     <div id="npm" class="block">
       <div class="flex-space top">
         <h2 class="title">Module npm</h2>
-        <Selector />
       </div>
       <p>
-        Le module npm de Blagues-API développé en Typescript supporte
-        l'intégralité des options présente sur l'API, il permettra d'intéragir
-        simplement avec l'API depuis le langage NodeJs.
+        Le module npm de Blagues-API développé en Typescript supporte l'intégralité des options présente sur l'API, il
+        permettra d'intéragir simplement avec l'API depuis le langage NodeJs.
       </p>
     </div>
     <div id="install" class="block">
@@ -17,27 +15,9 @@
           <h3 class="title">Installation</h3>
         </a>
         <div class="buttons">
-          <button
-            class="button"
-            :class="{ active: js_install === 'yarn' }"
-            @click="js_install = 'yarn'"
-          >
-            Yarn
-          </button>
-          <button
-            class="button"
-            :class="{ active: js_install === 'pnpm' }"
-            @click="js_install = 'pnpm'"
-          >
-            Pnpm
-          </button>
-          <button
-            class="button"
-            :class="{ active: js_install === 'npm' }"
-            @click="js_install = 'npm'"
-          >
-            Npm
-          </button>
+          <button class="button" :class="{ active: js_install === 'yarn' }" @click="js_install = 'yarn'">Yarn</button>
+          <button class="button" :class="{ active: js_install === 'pnpm' }" @click="js_install = 'pnpm'">Pnpm</button>
+          <button class="button" :class="{ active: js_install === 'npm' }" @click="js_install = 'npm'">Npm</button>
         </div>
       </div>
       <div v-show="js_install === 'yarn'">
@@ -68,27 +48,11 @@
           <h3 class="title">Mise en place</h3>
         </a>
         <div class="buttons">
-          <button
-            class="button"
-            :class="{ active: js_setup === 'browser' }"
-            @click="js_setup = 'browser'"
-          >
+          <button class="button" :class="{ active: js_setup === 'browser' }" @click="js_setup = 'browser'">
             Browser
           </button>
-          <button
-            class="button"
-            :class="{ active: js_setup === 'cjs' }"
-            @click="js_setup = 'cjs'"
-          >
-            CJS
-          </button>
-          <button
-            class="button"
-            :class="{ active: js_setup === 'es6' }"
-            @click="js_setup = 'es6'"
-          >
-            ES6
-          </button>
+          <button class="button" :class="{ active: js_setup === 'cjs' }" @click="js_setup = 'cjs'">CJS</button>
+          <button class="button" :class="{ active: js_setup === 'es6' }" @click="js_setup = 'es6'">ES6</button>
         </div>
       </div>
       <div v-show="js_setup === 'browser'">
@@ -119,8 +83,8 @@
       </pre>
       <p class="text">
         Il est fortement conseillé d'utiliser les variables d'environnement avec
-        <a href="https://www.npmjs.com/package/dotenv">dotenv</a> afin de ne pas
-        mettre votre token dans le code source de votre projet.
+        <a href="https://www.npmjs.com/package/dotenv">dotenv</a> afin de ne pas mettre votre token dans le code source
+        de votre projet.
       </p>
     </div>
     <div id="use" class="block">
@@ -128,8 +92,8 @@
         <h3 class="title">Utilisation</h3>
       </a>
       <p class="text">
-        Différentes méthodes vous sont rendues disponibles afin d'intéragir plus
-        facilement avec l'API depuis votre projet.
+        Différentes méthodes vous sont rendues disponibles afin d'intéragir plus facilement avec l'API depuis votre
+        projet.
       </p>
       <div id="random-joke" class="block">
         <a href="#random-joke" class="title-container">
@@ -140,10 +104,7 @@
             const blague = await blagues.random();
           </code>
         </pre>
-        <p class="text">
-          A cette méthode, vous pouvez spécifier certains types que vous ne
-          souhaitez pas recevoir.
-        </p>
+        <p class="text">A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.</p>
         <pre>
           <code class="language-javascript">
             const blague = await blagues.random({
@@ -172,9 +133,8 @@
           <h4 class="title">Blague à partir de son ID</h4>
         </a>
         <p class="text">
-          Les blagues sont identifiées par un ID que vous recevez en même tant
-          que chaque blague. Spécifiez cet identifiant en paramètre et vous
-          l'obtiendez à nouveau.
+          Les blagues sont identifiées par un ID que vous recevez en même tant que chaque blague. Spécifiez cet
+          identifiant en paramètre et vous l'obtiendez à nouveau.
         </p>
         <pre>
           <code class="language-javascript">
@@ -187,12 +147,7 @@
 </template>
 
 <script>
-import Selector from '@/components/home/Selector.vue'
-
 export default {
-  components: {
-    Selector,
-  },
   data() {
     return {
       js_install: 'yarn',

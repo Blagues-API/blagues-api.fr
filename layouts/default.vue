@@ -8,18 +8,6 @@
   </div>
 </template>
 
-<script>
-import Header from '../components/inc/Header'
-import Footer from '../components/inc/Footer'
-
-export default {
-  components: {
-    Header,
-    Footer,
-  },
-}
-</script>
-
 <style lang="scss">
 :root {
   --primary: #0098ff;
