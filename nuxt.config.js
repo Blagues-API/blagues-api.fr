@@ -1,9 +1,6 @@
-import path from 'path'
 import dotenv from 'dotenv'
 
-dotenv.config({
-  path: path.join(__dirname, '../../.env'),
-})
+dotenv.config()
 
 export default {
   server: {
@@ -132,6 +129,14 @@ export default {
   },
 
   build: {
+    postcss: {
+      preset: {
+        stage: 2,
+        autoprefixer: {
+          flexbox: true,
+        },
+      },
+    },
     babel: {
       babelrc: false,
       cacheDirectory: undefined,
