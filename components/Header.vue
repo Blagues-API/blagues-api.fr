@@ -190,7 +190,7 @@ header {
       }
     }
     &.open {
-      .button-menu {
+      .burger-target {
         transform: scale(0.8);
         transform: transform 0.2s linear;
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
@@ -221,7 +221,7 @@ header {
       }
       .item {
         transition-timing-function: cubic-bezier(0.95, 0, 0.35, 1.3);
-        box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
         &:nth-child(2) {
           transform: translate3d(-96px, 0, 0);
           transition-duration: 0.2s;
