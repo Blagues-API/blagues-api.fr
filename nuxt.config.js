@@ -22,13 +22,6 @@ export default {
 
   css: ['./assets/css/reset.css'],
 
-  plugins: [
-    {
-      src: '~/plugins/vue-body-scroll-lock',
-      mode: 'client',
-    },
-  ],
-
   components: true,
 
   buildModules: [
