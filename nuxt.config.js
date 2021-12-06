@@ -121,6 +121,11 @@ export default {
     },
   },
 
+  robots: {
+    UserAgent: '*',
+    Disallow: process.env.SEO === 'false' ? '/' : '',
+  },
+
   build: {
     postcss: {
       preset: {
