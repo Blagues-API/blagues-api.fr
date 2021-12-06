@@ -251,7 +251,7 @@ header {
 
       &.rounded {
         display: flex;
-        padding: 10px 16px;
+        padding: 8px 16px;
         border-radius: 18px;
         background-color: var(--primary);
         color: var(--white);
