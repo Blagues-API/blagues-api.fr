@@ -1,5 +1,5 @@
 <template>
-  <header v-body-scroll-lock="open">
+  <header>
     <nuxt-link class="brand" to="/" title="Accueil">
       <Logo class="logo" />
       <h1 class="name">BLAGUES API</h1>
@@ -27,17 +27,42 @@
       </span>
     </div>
     <div class="burger" :class="{ open }" @click="open = !open">
-      <div class="burger-lines" />
+      <div class="burger-target">
+        <div class="burger-icon">
+          <div class="burger-lines" />
+        </div>
+      </div>
+      <a href="https://discord.gg/PPNpVaF" class="item"> <DiscordIcon /> </a>
+      <a
+        class="item"
+        @click="$auth.loggedIn ? $router.push('/account') : $auth.loginWith('discord', { params: { prompt: 'none' } })"
+      >
+        <div
+          v-if="$auth.loggedIn"
+          class="mobile-avatar"
+          :style="{
+            'background-image': `url(https://cdn.discordapp.com/avatars/${$auth.user.id}/${$auth.user.avatar}?size=64)`,
+          }"
+        />
+        <LoginIcon v-else />
+      </a>
+      <a href="https://github.com/Blagues-API/blagues-api" class="item"> <GithubIcon /> </a>
     </div>
   </header>
 </template>
 
 <script>
 import Logo from '@/assets/logo.svg?inline'
+import GithubIcon from '@/assets/icons/github.svg?inline'
+import DiscordIcon from '@/assets/icons/discord.svg?inline'
+import LoginIcon from '@/assets/icons/login.svg?inline'
 
 export default {
   components: {
     Logo,
+    GithubIcon,
+    DiscordIcon,
+    LoginIcon,
   },
   data() {
     return {
@@ -82,69 +107,132 @@ header {
 
   .burger {
     display: none;
-    position: relative;
-    z-index: 3;
-    width: 40px;
-    height: 40px;
-    margin-right: 8px;
-    transition: 0.2s all;
-    font-size: 12px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 72px;
+    height: 72px;
+    .burger-target {
+      display: flex;
+      position: absolute;
+      z-index: 2;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      transition: transform 0.4s cubic-bezier(0.17, 0.9, 0.3, 1.3), box-shadow 0.4s ease-out;
+      border-radius: 48px;
+      background-color: white;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
 
-    .burger-lines {
-      top: 50%;
-      width: 28px;
-      margin-top: -2.5px;
+      .burger-icon {
+        position: relative;
+        z-index: 3;
+        width: 40px;
+        height: 40px;
+        transition: 0.2s all;
+        font-size: 12px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
 
-      &,
-      &::after,
-      &::before {
-        content: '';
-        display: block;
-        position: absolute;
-        right: 0;
-        height: 5px;
-        transform: rotate(0);
-        transition: 0.2s top 0.2s, 0.1s left, 0.2s transform, 0.4s background-color 0.2s, 0s width 0.15s;
-        border-radius: 2.5px;
-        background-color: var(--primary);
-        pointer-events: none;
-      }
+        .burger-lines {
+          top: 50%;
+          width: 40px;
+          margin-top: -2.5px;
 
-      &::after {
-        top: -14px;
-        width: 38px;
-      }
+          &,
+          &::after,
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 0;
+            height: 5px;
+            transform: rotate(0);
+            transition: 0.2s top 0.2s, right 0.2s, 0.2s transform, background-color 0.2s, width 0.2s;
+            border-radius: 2.5px;
+            background-color: var(--primary);
+            pointer-events: none;
+          }
 
-      &::before {
-        top: 14px;
-        width: 18px;
+          &::after {
+            top: -14px;
+            right: 6px;
+            width: 28px;
+          }
+
+          &::before {
+            top: 14px;
+            right: 6px;
+            width: 28px;
+          }
+        }
       }
     }
+    .item {
+      display: flex;
+      position: absolute;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      transition: transform ease-out 0.2s, box-shadow ease-out 0.2s;
+      border-radius: 32px;
+      background-color: white;
+      cursor: pointer;
 
+      .mobile-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 16px;
+        background-size: 32px;
+      }
+    }
     &.open {
-      .burger-lines {
-        background-color: transparent;
+      .button-menu {
+        transform: scale(0.8);
+        transform: transform 0.2s linear;
+        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+        .burger-lines {
+          background-color: transparent;
 
-        &,
-        &::after,
-        &::before {
-          transition: 0.2s background-color, 0.2s top, 0.2s left, 0.2s transform 0.15s, 0s width 0.15s;
+          &,
+          &::after,
+          &::before {
+            transition: background-color 0.2s, 0.2s top, right 0.2s, 0.2s transform 0.2s, width 0.2s;
+          }
+
+          &::before,
+          &::after {
+            top: 0;
+            right: 0;
+            width: 40px;
+          }
+
+          &::before {
+            transform: rotate(-45deg);
+          }
+
+          &::after {
+            transform: rotate(45deg);
+          }
         }
-
-        &::before,
-        &::after {
-          top: 0;
-          width: 38px;
+      }
+      .item {
+        transition-timing-function: cubic-bezier(0.95, 0, 0.35, 1.3);
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+        &:nth-child(2) {
+          transform: translate3d(-96px, 0, 0);
+          transition-duration: 0.2s;
         }
-
-        &::before {
-          transform: rotate(-45deg);
+        &:nth-child(3) {
+          transform: translate3d(-72px, -72px, 0);
+          transition-duration: 0.3s;
         }
-
-        &::after {
-          transform: rotate(45deg);
+        &:nth-child(4) {
+          transform: translate3d(0, -96px, 0);
+          transition-duration: 0.4s;
         }
       }
     }
