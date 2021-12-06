@@ -10,12 +10,103 @@ export default {
   },
 
   head: {
-    title: 'Blagues-API',
+    title: 'Blagues API',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        // Windows
+        name: 'msapplication-navbutton-color',
+        content: '#0098ff',
+      },
+      {
+        // Windows
+        name: 'msapplication-TileColor',
+        content: '#0098ff',
+      },
+      {
+        // Pinned Sites
+        name: 'application-name',
+        content: 'Blagues API',
+      },
+      {
+        // Pinned Sites
+        name: 'msapplication-tooltip',
+        content:
+          'Blagues API est une API de blagues françaises gratuite et communautaire gérée par sa communauté Discord.',
+      },
+      {
+        // Pinned Sites
+        name: 'msapplication-starturl',
+        content: '/',
+      },
+      {
+        // Tap highlighting
+        name: 'msapplication-tap-highlight',
+        content: 'no',
+      },
+      {
+        // UC Mobile Browser
+        name: 'full-screen',
+        content: 'Yes',
+      },
+      {
+        // UC Mobile Browser
+        name: 'browsermode',
+        content: 'application',
+      },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Blagues API est une API de blagues françaises gratuite et communautaire gérée par sa communauté Discord.',
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Blagues API',
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content:
+          'Blagues API est une API de blagues françaises gratuite et communautaire gérée par sa communauté Discord.',
+      },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: process.env.BASE_URL,
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: 'Blagues API',
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content:
+          'Blagues API est une API de blagues françaises gratuite et communautaire gérée par sa communauté Discord.',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: `${process.env.BASE_URL}/logo.png`,
+      },
+      {
+        hid: 'og:image:secure_url',
+        property: 'og:image:secure_url',
+        content: `${process.env.BASE_URL}/logo.png`,
+      },
+
+      // Twitter card
+      {
+        hid: 'twitter:image:src',
+        name: 'twitter:image:src',
+        content: `${process.env.BASE_URL}/logo.png`,
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
