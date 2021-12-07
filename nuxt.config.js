@@ -214,6 +214,7 @@ export default {
   robots: {
     UserAgent: '*',
     Disallow: process.env.SEO === 'false' ? '/' : '',
+    Sitemap: `${process.env.BASE_URL}/sitemap.xml`,
   },
 
   build: {
