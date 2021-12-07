@@ -132,6 +132,8 @@ export default {
     '@nuxtjs/pwa',
     // https://auth.nuxtjs.org/
     '@draftbot/nuxtjs-auth',
+    // https://github.com/nuxt-community/robots-module
+    '@nuxtjs/robots',
   ],
 
   axios: {
