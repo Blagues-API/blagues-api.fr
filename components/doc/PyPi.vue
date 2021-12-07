@@ -36,7 +36,7 @@
       </pre>
       <pre>
         <code class="language-javascript">
-          blagues = BlaguesAPI("<mark>VOTRE_TOKEN_ICI</mark>")
+          const blagues = BlaguesAPI("<mark>VOTRE_TOKEN_ICI</mark>")
         </code>
       </pre>
       <p class="text">
