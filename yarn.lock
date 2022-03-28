@@ -42,7 +42,7 @@
     json5 "^2.1.2"
     semver "^6.3.0"
 
-"@babel/eslint-parser@^7.12.16", "@babel/eslint-parser@^7.16.5":
+"@babel/eslint-parser@^7.12.16", "@babel/eslint-parser@^7.17.0":
   version "7.17.0"
   resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.17.0.tgz#eabb24ad9f0afa80e5849f8240d0e5facc2d90d6"
   integrity sha512-PUEJ7ZBXbRkbq3qqM/jZ2nIuakUBqCYc7Qf52Lj7dlZ6zERnqisdHioL0l4wwQZnmskMeasqUNzLBFKs3nylXA==
@@ -4043,7 +4043,7 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz#14ba83a5d373e3d311e5afca29cf5bfad965bf34"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-prettier@^8.3.0:
+eslint-config-prettier@^8.5.0:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
   integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
@@ -4115,7 +4115,7 @@ eslint-plugin-node@^11.1.0:
     resolve "^1.10.1"
     semver "^6.1.0"
 
-eslint-plugin-nuxt@^3.1.0:
+eslint-plugin-nuxt@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-nuxt/-/eslint-plugin-nuxt-3.2.0.tgz#5fbe95c8c7784c071d39adc848a695ef5e91fb34"
   integrity sha512-SWpmJALwagdrlMooajFX9IFxFEKdBxD+e4NFOVw9FGc22HQpNKdiljRHchS/3O5e2R7sPZYv8xdCtoordqIXFQ==
@@ -4258,7 +4258,7 @@ eslint-webpack-plugin@^2.4.1:
     normalize-path "^3.0.0"
     schema-utils "^3.1.1"
 
-eslint@^8.7.0:
+eslint@^8.12.0:
   version "8.12.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.12.0.tgz#c7a5bd1cfa09079aae64c9076c07eada66a46e8e"
   integrity sha512-it1oBL9alZg1S8UycLm5YDMAkIhtH6FtAzuZs6YvoGVldWjbS08BkAdb/ymP9LlAyq8koANu32U7Ib/w+UNh8Q==
@@ -6005,7 +6005,7 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@^12.3.1:
+lint-staged@^12.3.7:
   version "12.3.7"
   resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.7.tgz#ad0e2014302f704f9cf2c0ebdb97ac63d0f17be0"
   integrity sha512-/S4D726e2GIsDVWIk1XGvheCaDm1SJRQp8efamZFWJxQMVEbOwSysp7xb49Oo73KYCdy97mIWinhlxcoNqIfIQ==
@@ -8131,7 +8131,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-"prettier@^1.18.2 || ^2.0.0", prettier@^2.5.1:
+"prettier@^1.18.2 || ^2.0.0", prettier@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.1.tgz#d472797e0d7461605c1609808e27b80c0f9cfe17"
   integrity sha512-8UVbTBYGwN37Bs9LERmxCPjdvPxlEowx2urIL6urHzdb3SDq4B/Z6xLFCblrSnE4iKWcS6ziJ3aOYrc1kz/E2A==
