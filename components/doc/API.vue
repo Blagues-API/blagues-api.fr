@@ -32,7 +32,7 @@
     </div>
     <div id="advanced-use" class="block">
       <a href="#advanced-use" class="title-container">
-        <h3 class="title">Utilisation avancé</h3>
+        <h3 class="title">Utilisation avancée</h3>
       </a>
       <p class="text">
         Parfois certains types d'humour dérangent certaines personnes, hors blagues-api est une api publique qui s'est
