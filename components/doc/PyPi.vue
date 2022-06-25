@@ -6,7 +6,7 @@
       </div>
       <p>
         Le module PyPi de Blagues-API supporte l'intégralité des options présente sur l'API, il permettra d'intéragir
-        simplement avec l'API depuis le langage Python de manière <b class="type">asynchrone</b>.
+        simplement avec l'API depuis le langage Python de manière asynchrone.
       </p>
     </div>
     <div id="install" class="block">
