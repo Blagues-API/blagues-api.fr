@@ -29,6 +29,10 @@
         <h5 class="language">BLAGUE PAR ID</h5>
         <pre><code class="language-javascript">GET /api/id/:id:</code></pre>
       </div>
+      <div class="example">
+        <h5 class="language">NOMBRES DE BLAGUES</h5>
+        <pre><code class="language-javascript">GET /api/</code></pre>
+      </div>
     </div>
     <div id="advanced-use" class="block">
       <a href="#advanced-use" class="title-container">

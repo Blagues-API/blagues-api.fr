@@ -53,6 +53,16 @@
         Différentes méthodes asynchrones vous sont rendues disponibles afin d'intéragir plus facilement avec l'API
         depuis votre projet.
       </p>
+      <div id="count-joke" class="block">
+        <a href="#count-joke" class="title-container">
+          <h4 class="title">Nombres de blagues</h4>
+        </a>
+        <pre>
+          <code class="language-javascript">
+            const blague = await blagues.count()
+          </code>
+        </pre>
+      </div>
       <div id="random-joke" class="block">
         <a href="#random-joke" class="title-container">
           <h4 class="title">Blague aléatoire</h4>
