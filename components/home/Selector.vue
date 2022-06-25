@@ -46,6 +46,7 @@
 import DownIcon from '@/assets/icons/down.svg?inline'
 import NpmIcon from '@/assets/icons/npm_full.svg'
 import PypiIcon from '@/assets/icons/pypi_full.svg'
+import PackagistIcon from '@/assets/icons/packagist.svg'
 import ApiIcon from '@/assets/icons/api_full.svg'
 
 export default {
@@ -69,6 +70,12 @@ export default {
           name: 'PYPI',
           color: '#3775a9',
           icon: PypiIcon,
+        },
+        {
+          id: 'packagist',
+          name: 'PACKAGIST',
+          color: '#f28d1a',
+          icon: PackagistIcon,
         },
         {
           id: 'api',
