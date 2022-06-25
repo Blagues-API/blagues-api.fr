@@ -185,7 +185,7 @@ export default {
           align-items: center;
           min-width: 100px;
           height: 100%;
-          margin-top: 24px;
+          margin-top: 16px;
           margin-right: 16px;
           padding: 12px;
           border-radius: 6px;
