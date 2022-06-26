@@ -1,8 +1,10 @@
-import dotenv from 'dotenv'
+// @ts-check
+import 'dotenv/config'
 
-dotenv.config()
-
-export default {
+/**
+ * @type {import('@nuxt/types').NuxtConfig}
+ */
+const config = {
   server: {
     port: 3000, // default: 3000
     host: '0.0.0.0', // default: localhost,
@@ -175,7 +177,7 @@ export default {
   },
 
   proxy: {
-    '/api': process.env.API_URL,
+    '/api': { target: process.env.API_URL },
   },
 
   pwa: {
@@ -254,3 +256,5 @@ export default {
     apiToken: process.env.API_TOKEN,
   },
 }
+
+export default config
