@@ -31,7 +31,7 @@
       </div>
       <div class="example">
         <h5 class="language">NOMBRES DE BLAGUES</h5>
-        <pre><code class="language-javascript">GET /api/</code></pre>
+        <pre><code class="language-javascript">GET /api/count</code></pre>
       </div>
     </div>
     <div id="advanced-use" class="block">
