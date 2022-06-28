@@ -19,6 +19,10 @@
           <button class="button api">
             <ApiIcon class="icon" @click="scrollToDocs('api')" />
           </button>
+          <button class="button packagist" @click="scrollToDocs('packagist')">
+            <PackagistIcon class="icon" />
+            <span class="name">PACKAGIST</span>
+          </button>
         </div>
       </div>
       <transition name="fade" mode="out-in">
@@ -55,6 +59,7 @@ import NpmIcon from '@/assets/icons/npm.svg?inline'
 import PyPiIcon from '@/assets/icons/pypi.svg?inline'
 import ApiIcon from '@/assets/icons/api.svg?inline'
 import DownIcon from '@/assets/icons/down.svg?inline'
+import PackagistIcon from '@/assets/icons/packagist.svg?inline'
 
 const jokesTypes = {
   limit: 'Blague 18+',
@@ -71,6 +76,7 @@ export default {
     PyPiIcon,
     ApiIcon,
     DownIcon,
+    PackagistIcon,
   },
   data() {
     return {
@@ -172,13 +178,14 @@ export default {
 
       .buttons {
         display: flex;
-        margin-top: 24px;
+        flex-wrap: wrap;
 
         .button {
           display: flex;
           align-items: center;
           min-width: 100px;
           height: 100%;
+          margin-top: 16px;
           margin-right: 16px;
           padding: 12px;
           border-radius: 6px;
@@ -211,9 +218,17 @@ export default {
             }
           }
 
+          &.packagist {
+            min-width: 0 !important;
+            background-color: var(--white);
+
+            .name {
+              color: #f28d1a;
+            }
+          }
+
           &.api {
             min-width: 0 !important;
-            margin: 0;
             background-color: #3f3f3f;
           }
         }
@@ -337,7 +352,7 @@ export default {
       flex-direction: column;
 
       .content {
-        max-width: 280px;
+        max-width: 290px;
         margin-bottom: 48px;
 
         h2 {

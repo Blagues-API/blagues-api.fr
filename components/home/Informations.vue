@@ -24,6 +24,7 @@
 
       <DocNode v-show="doc === 'npm'" />
       <DocPyPi v-show="doc === 'pypi'" />
+      <DocPackagist v-show="doc === 'packagist'" />
       <DocAPI v-show="doc === 'api'" />
 
       <div id="thanks" class="block">
