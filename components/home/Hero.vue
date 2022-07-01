@@ -16,12 +16,12 @@
             <PyPiIcon class="icon" />
             <span class="name">PY<span>PI</span></span>
           </button>
-          <button class="button api">
-            <ApiIcon class="icon" @click="scrollToDocs('api')" />
-          </button>
           <button class="button packagist" @click="scrollToDocs('packagist')">
             <PackagistIcon class="icon" />
             <span class="name">PACKAGIST</span>
+          </button>
+          <button class="button api">
+            <ApiIcon class="icon" @click="scrollToDocs('api')" />
           </button>
         </div>
       </div>
