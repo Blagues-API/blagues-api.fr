@@ -43,8 +43,8 @@
       </pre>
       <p class="text">
         Il est fortement conseillé d'utiliser les variables d'environnement avec
-        <a href="https://packagist.org/packages/vlucas/phpdotenv">dotenv</a> afin de ne pas mettre votre token dans le c
-        ode source de votre projet.
+        <a href="https://packagist.org/packages/vlucas/phpdotenv">dotenv</a> afin de ne pas mettre votre token dans le
+        code source de votre projet.
       </p>
       <p class="text"></p>
     </div>
