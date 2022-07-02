@@ -41,6 +41,11 @@
           $blaguesApi = new BlaguesApi('VOTRE_TOKEN_ICI');
         </code>
       </pre>
+      <p class="text">
+        Il est fortement conseillé d'utiliser les variables d'environnement avec
+        <a href="https://www.npmjs.com/package/dotenv">dotenv</a> afin de ne pas mettre votre token dans le code source
+        de votre projet.
+      </p>
       <p class="text"></p>
     </div>
     <div id="use" class="block">
