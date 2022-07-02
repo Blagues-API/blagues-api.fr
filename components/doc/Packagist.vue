@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div id="pypi" class="block">
+    <div id="php" class="block">
       <div class="flex-space top">
-        <h2 class="title">Module PyPi</h2>
+        <h2 class="title">Module Packagist</h2>
       </div>
       <p>
-        Le module PyPi de Blagues-API supporte l'intégralité des options présente sur l'API, il permettra d'intéragir
-        simplement avec l'API depuis le langage Python de manière asynchrone.
+        Le module Packagist de <a href="https://github.com/Blagues-API/blagues-api-php">Blagues-API</a> supporte
+        l'intégralité des options présente sur l'API, il permettra d'intéragir simplement avec l'API depuis le langage
+        PHP de manière synchrone.
       </p>
     </div>
     <div id="install" class="block">
@@ -18,7 +19,7 @@
       <div>
         <pre>
           <code class="language-bash">
-            pip install blagues-api
+            composer require zuruuh/blagues-api
           </code>
         </pre>
       </div>
@@ -31,27 +32,29 @@
       </div>
       <pre>
         <code class="language-javascript">
-          from blagues_api import BlaguesAPI
+          use Blagues\BlaguesApi;
+          use Blagues\Models\Joke;
         </code>
       </pre>
       <pre>
         <code class="language-javascript">
-          const blagues = BlaguesAPI("<mark>VOTRE_TOKEN_ICI</mark>")
+          $blaguesApi = new BlaguesApi('VOTRE_TOKEN_ICI');
         </code>
       </pre>
       <p class="text">
         Il est fortement conseillé d'utiliser les variables d'environnement avec
-        <a href="https://pypi.org/project/python-dotenv">dotenv</a> afin de ne pas mettre votre token dans le code
-        source de votre projet.
+        <a href="https://www.npmjs.com/package/dotenv">dotenv</a> afin de ne pas mettre votre token dans le code source
+        de votre projet.
       </p>
+      <p class="text"></p>
     </div>
     <div id="use" class="block">
       <a href="#use" class="title-container">
         <h3 class="title">Utilisation</h3>
       </a>
       <p class="text">
-        Différentes méthodes asynchrones vous sont rendues disponibles afin d'intéragir plus facilement avec l'API
-        depuis votre projet.
+        Différentes méthodes synchrones vous sont rendues disponibles afin d'intéragir plus facilement avec l'API depuis
+        votre projet.
       </p>
       <div id="random-joke" class="block">
         <a href="#random-joke" class="title-container">
@@ -59,13 +62,13 @@
         </a>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.random()
+            $joke = $blaguesApi->getRandom();
           </code>
         </pre>
         <p class="text">A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.</p>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.random(disallow=[BlagueType.LIMIT, BlagueType.BEAUF])
+            $joke = $blaguesApi->getRandom([Joke::TYPE_DARK]);
           </code>
         </pre>
       </div>
@@ -75,7 +78,7 @@
         </a>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.random_categorized(BlagueType.DEV)
+            $joke = $blaguesApi->getByType(Joke::TYPE_DEV);
           </code>
         </pre>
       </div>
@@ -83,13 +86,10 @@
         <a href="#joke-by-id" class="title-container">
           <h4 class="title">Blague à partir de son ID</h4>
         </a>
-        <p class="text">
-          Les blagues sont identifiées par un ID que vous recevez en même tant que chaque blague. Spécifiez cet
-          identifiant en paramètre et vous l'obtiendez à nouveau.
-        </p>
+        <p class="text"></p>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.from_id(50)
+            $joke = $blaguesApi->getById(1234);
           </code>
         </pre>
       </div>
@@ -99,7 +99,7 @@
         </a>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.count()
+            $joke = $blaguesApi->count();
           </code>
         </pre>
       </div>
