@@ -38,7 +38,7 @@
       </pre>
       <pre>
         <code class="language-javascript">
-          $blaguesApi = new BlaguesApi('VOTRE_TOKEN_ICI');
+          $blaguesApi = new BlaguesApi('<mark>VOTRE_TOKEN_ICI</mark>');
         </code>
       </pre>
       <p class="text">
