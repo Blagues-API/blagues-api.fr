@@ -2,19 +2,20 @@
 
 Site de l'API de Blagues françaises collaborative et Open Source
 
-[![Contributeurs](https://img.shields.io/github/contributors/Blagues-API/blagues-api.fr?style=for-the-badge)](https://github.com/Blagues-API/blagues-api.fr/graphs/contributors)
-[![Stars](https://img.shields.io/github/stars/Blagues-API/blagues-api.fr?style=for-the-badge)](https://github.com/Blagues-API/blagues-api.fr/stargazers)
-[![Licence](https://img.shields.io/github/license/Blagues-API/blagues-api.fr?style=for-the-badge)](https://github.com/Blagues-API/blagues-api.fr/blob/master/LICENCE)
+[![Jokes](https://img.shields.io/badge/dynamic/json?color=informational&label=jokes%20&query=%24.count&suffix=%20&url=https%3A%2F%2Fwww.blagues-api.fr%2Fapi%2Fcount)](https://www.blagues-api.fr)
+[![Contributeurs](https://img.shields.io/github/contributors/Blagues-API/blagues-api.fr?style=flat)](https://github.com/Blagues-API/blagues-api.fr/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/Blagues-API/blagues-api.fr?style=flat)](https://github.com/Blagues-API/blagues-api.fr/stargazers)
+[![Licence](https://img.shields.io/github/license/Blagues-API/blagues-api.fr?style=flat)](https://github.com/Blagues-API/blagues-api.fr/blob/master/LICENCE)
 
 ---
 ## Utilisation
 
-Retrouvez la documentation de l'API ainsi des modules directement sur le site [Blagues-API.fr](https://www.blagues-api.fr).
+Retrouvez la documentation de l'API ainsi des modules directement sur le site [blagues-api.fr](https://www.blagues-api.fr).
 
 ## Contribuer
 
 Le projet est open-source ce qui signifie que vous pouvez contribuer et faire évoluer le projet.<br>
-Rendez-vous sur a page des [issues](https://github.com/Blagues-API/blagues-api.fr/issues), sélectionnez une issue qui vous intéresse et faites une demande pour y être assigné.
+Rendez-vous sur la page des [issues](https://github.com/Blagues-API/blagues-api.fr/issues), sélectionnez une issue qui vous intéresse et faites une demande pour y être assigné.
 > Les issues ayant le label `good first issue` sont les plus simples.
 
 ### Installation de Docker
@@ -22,7 +23,7 @@ Rendez-vous sur a page des [issues](https://github.com/Blagues-API/blagues-api.f
 Le projet fonctionne avec Docker, il vous permettra d'obtenir le même environnement qu'en production.<br>
 Si vous êtes sous Windows ou Mac, il vous faudra installer [Docker Desktop](https://www.docker.com/products/docker-desktop).
 
-⚠️ Si vous souhaitez tout de même contribuer au projet sans utiliser Docker qui n'est absolument pas recommander, lancez l'instance de développement avec la commande `yarn dev`.
+⚠️ Si vous souhaitez tout de même contribuer au projet sans utiliser Docker qui n'est absolument pas recommandé, lancez l'instance de développement avec la commande `yarn dev`.
 
 ### Installation des dépendances du projet
 
@@ -72,7 +73,7 @@ Voici quelques liens pour obtenir de l'aide :
 
 ## Licence
 
-[![Licence](https://img.shields.io/github/license/Blagues-API/api?style=for-the-badge)](https://github.com/Blagues-API/api/blob/master/LICENCE)
+[![Licence](https://img.shields.io/github/license/Blagues-API/api?style=flat)](https://github.com/Blagues-API/api/blob/master/LICENCE)
 
 Copyright 2020-2022 ©
 <a href="https://www.draftman.fr" target="_blank">DraftMan</a>.
