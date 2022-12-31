@@ -75,5 +75,5 @@ Voici quelques liens pour obtenir de l'aide :
 
 [![Licence](https://img.shields.io/github/license/Blagues-API/api?style=flat)](https://github.com/Blagues-API/api/blob/master/LICENCE)
 
-Copyright 2020-2022 ©
+Copyright 2020-2023 ©
 <a href="https://www.draftman.fr" target="_blank">DraftMan</a>.
