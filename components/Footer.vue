@@ -40,7 +40,7 @@ footer {
     .separator {
       margin: 0 8px;
     }
-    @media screen and(max-width: 720px) {
+    @media screen and (max-width: 720px) {
       flex-direction: column;
 
       .separator {

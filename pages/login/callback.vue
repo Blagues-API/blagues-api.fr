@@ -12,7 +12,7 @@
   span {
     padding-top: 64px;
   }
-  @media screen and(max-width: 720px) {
+  @media screen and (max-width: 720px) {
     min-height: calc(100vh - 96px - 60px);
   }
 }
