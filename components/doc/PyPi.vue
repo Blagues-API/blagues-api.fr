@@ -2,7 +2,9 @@
   <div>
     <div id="pypi" class="block">
       <div class="flex-space top">
-        <h2 class="title">Module PyPi</h2>
+        <h2 class="title">
+          Module PyPi
+        </h2>
       </div>
       <p>
         Le module PyPi de Blagues-API supporte l'intégralité des options présente sur l'API, il permettra d'intéragir
@@ -62,7 +64,9 @@
             const blague = await blagues.random()
           </code>
         </pre>
-        <p class="text">A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.</p>
+        <p class="text">
+          A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.
+        </p>
         <pre>
           <code class="language-javascript">
             const blague = await blagues.random(disallow=[BlagueType.LIMIT, BlagueType.BEAUF])

@@ -2,7 +2,9 @@
   <div>
     <div id="api" class="block">
       <div class="flex-space top">
-        <h2 class="title">API publique</h2>
+        <h2 class="title">
+          API publique
+        </h2>
       </div>
       <p>
         L'API Rest est le meilleur moyen d'utiliser Blagues-API sans dépendances, en requièrera nénanmoins plus de
@@ -18,19 +20,27 @@
         vous permettront de récupérer une blague aléatoirement dans un thème ou type de blague spécifique.
       </p>
       <div class="example">
-        <h5 class="language">BLAGUE ALÉATOIRE</h5>
+        <h5 class="language">
+          BLAGUE ALÉATOIRE
+        </h5>
         <pre><code class="language-javascript">GET /api/random</code></pre>
       </div>
       <div class="example">
-        <h5 class="language">BLAGUE ALÉATOIRE CATÉGORISÉ</h5>
+        <h5 class="language">
+          BLAGUE ALÉATOIRE CATÉGORISÉ
+        </h5>
         <pre><code class="language-javascript">GET /api/type/:type:/random // type: global, dev, dark, limit, beauf, blondes</code></pre>
       </div>
       <div class="example">
-        <h5 class="language">BLAGUE PAR ID</h5>
+        <h5 class="language">
+          BLAGUE PAR ID
+        </h5>
         <pre><code class="language-javascript">GET /api/id/:id:</code></pre>
       </div>
       <div class="example">
-        <h5 class="language">NOMBRES DE BLAGUES</h5>
+        <h5 class="language">
+          NOMBRES DE BLAGUES
+        </h5>
         <pre><code class="language-javascript">GET /api/count</code></pre>
       </div>
     </div>
@@ -44,11 +54,15 @@
         filtrer les blagues et donc d'en retirer celles qui font partie d'une catégorie qui ne vous convient pas.
       </p>
       <div class="example">
-        <h5 class="language">UTILISATION D'UN SEUL FILTRE</h5>
+        <h5 class="language">
+          UTILISATION D'UN SEUL FILTRE
+        </h5>
         <pre><code class="language-javascript">GET /api/random?disallow=dark</code></pre>
       </div>
       <div class="example">
-        <h5 class="language">UTILISATION DE PLUSIEURS FILTRES</h5>
+        <h5 class="language">
+          UTILISATION DE PLUSIEURS FILTRES
+        </h5>
         <pre><code class="language-javascript">GET /api/random?disallow=dark&disallow=limit&disallow=dev</code></pre>
       </div>
     </div>
@@ -58,10 +72,10 @@
       </a>
       <p class="text">
         L'api de blagues utilise un token d'authentification Bearer pour les requêtes. Vous pouvez le gérer depuis votre
-        profil.<br />
+        profil.<br>
         Les requêtes doivent toutes être effectuées via
         <a href="http://en.wikipedia.org/wiki/HTTP_Secure">HTTPS</a>. Tous les appels effectuées sans authentification
-        ou en HTTP échoueront.<br />
+        ou en HTTP échoueront.<br>
         Si vous avez des difficultées à obtenir un certificat HTTPS, voici
         <a href="https://certbot.eff.org/">Certbot</a>, un outil qui permet d'en obtenir un gratuitement !
       </p>

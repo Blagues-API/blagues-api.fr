@@ -2,7 +2,9 @@
   <div>
     <div id="npm" class="block">
       <div class="flex-space top">
-        <h2 class="title">Module npm</h2>
+        <h2 class="title">
+          Module npm
+        </h2>
       </div>
       <p>
         Le module npm de Blagues-API développé en Typescript supporte l'intégralité des options présente sur l'API, il
@@ -15,9 +17,15 @@
           <h3 class="title">Installation</h3>
         </a>
         <div class="buttons">
-          <button class="button" :class="{ active: js_install === 'yarn' }" @click="js_install = 'yarn'">Yarn</button>
-          <button class="button" :class="{ active: js_install === 'pnpm' }" @click="js_install = 'pnpm'">Pnpm</button>
-          <button class="button" :class="{ active: js_install === 'npm' }" @click="js_install = 'npm'">Npm</button>
+          <button class="button" :class="{ active: js_install === 'yarn' }" @click="js_install = 'yarn'">
+            Yarn
+          </button>
+          <button class="button" :class="{ active: js_install === 'pnpm' }" @click="js_install = 'pnpm'">
+            Pnpm
+          </button>
+          <button class="button" :class="{ active: js_install === 'npm' }" @click="js_install = 'npm'">
+            Npm
+          </button>
         </div>
       </div>
       <div v-show="js_install === 'yarn'">
@@ -51,8 +59,12 @@
           <button class="button" :class="{ active: js_setup === 'browser' }" @click="js_setup = 'browser'">
             Browser
           </button>
-          <button class="button" :class="{ active: js_setup === 'cjs' }" @click="js_setup = 'cjs'">CJS</button>
-          <button class="button" :class="{ active: js_setup === 'es6' }" @click="js_setup = 'es6'">ES6</button>
+          <button class="button" :class="{ active: js_setup === 'cjs' }" @click="js_setup = 'cjs'">
+            CJS
+          </button>
+          <button class="button" :class="{ active: js_setup === 'es6' }" @click="js_setup = 'es6'">
+            ES6
+          </button>
         </div>
       </div>
       <div v-show="js_setup === 'browser'">
@@ -104,7 +116,9 @@
             const blague = await blagues.random();
           </code>
         </pre>
-        <p class="text">A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.</p>
+        <p class="text">
+          A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.
+        </p>
         <pre>
           <code class="language-javascript">
             const blague = await blagues.random({
@@ -158,16 +172,16 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       js_install: 'yarn',
-      js_setup: 'cjs',
+      js_setup: 'cjs'
     }
   },
   methods: {
-    updateVersion(key, value) {
+    updateVersion (key, value) {
       this[key] = value
-    },
-  },
+    }
+  }
 }
 </script>

@@ -2,7 +2,7 @@
   <div :class="$route.name">
     <Header />
     <transition name="down">
-      <Nuxt />
+      <slot />
     </transition>
     <Footer />
   </div>

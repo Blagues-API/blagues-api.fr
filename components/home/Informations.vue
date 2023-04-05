@@ -7,15 +7,21 @@
       data-prismjs-copy-timeout="2000"
     >
       <div class="block">
-        <h2 class="title">Qu’est ce que Blagues API ?</h2>
+        <h2 class="title">
+          Qu’est ce que Blagues API ?
+        </h2>
         <p>
-          <strong>Blagues API</strong> est une API de blagues, rassemblant les meilleures blagues avec un total de
+          <strong>Blagues API</strong> est une API de blagues, rassemblant les
+          meilleures blagues avec un total de
           <strong>{{ count }} blagues</strong> françaises.
         </p>
         <p>Des blagues proposées par la communauté et catégorisées.</p>
         <p>
           L’API est accessible <strong>gratuitement</strong> et rassemble sur le
-          <a href="https://discord.gg/PPNpVaF" title="Discord de Blagues API">discord</a>
+          <a
+            href="https://discord.gg/PPNpVaF"
+            title="Discord de Blagues API"
+          >discord</a>
           une communauté francophone.
         </p>
       </div>
@@ -32,44 +38,46 @@
           <h3 class="title">Remerciements</h3>
         </a>
         <p>
-          Un grand merci à toute la communauté qui a contribué au projet que ça soit sur le discord ou sur le github en
-          apportant leurs ajouts et modifications au code de l'api, mais également à tous ceux qui ont proposé leurs
-          blagues afin d'agrandir le répertoire de l'api. Le nombre de blagues françaises continuent de grandir de jours
-          en jours. Merci à vous !
+          Un grand merci à toute la communauté qui a contribué au projet que ça
+          soit sur le discord ou sur le github en apportant leurs ajouts et
+          modifications au code de l'api, mais également à tous ceux qui ont
+          proposé leurs blagues afin d'agrandir le répertoire de l'api. Le
+          nombre de blagues françaises continuent de grandir de jours en jours.
+          Merci à vous !
         </p>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-import prismjs from 'prismjs'
+<script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { highlightAll } from 'prismjs'
+import { useDocStore } from '~/store/documentation'
 
-import { mapState } from 'vuex'
+defineProps({
+  count: {
+    type: Number,
+    default: 0
+  }
+})
 
-export default {
-  props: {
-    count: {
-      type: Number,
-      default: 0,
-    },
-  },
-  computed: mapState(['doc']),
-  watch: {
-    async doc() {
-      await this.$nextTick()
-      prismjs.highlightAll()
-    },
-  },
-  async mounted() {
-    await this.$nextTick()
-    prismjs.highlightAll()
-  },
+const store = useDocStore()
+
+const { doc } = storeToRefs(store)
+
+async function renderMarkdown () {
+  await nextTick()
+  highlightAll()
 }
+
+onMounted(renderMarkdown)
+
+watch(doc, renderMarkdown)
 </script>
 
 <style lang="scss">
-@import url('@/assets/css/prism.css');
+@import "@/assets/css/prism.css";
 
 .informations {
   display: flex;
@@ -93,6 +101,7 @@ export default {
 
         &.top {
           align-items: center;
+
           @media screen and (max-width: 430px) {
             flex-direction: column-reverse;
             align-items: flex-start;
@@ -164,7 +173,7 @@ export default {
           cursor: pointer;
 
           &::after {
-            content: '#';
+            content: "#";
             position: absolute;
             left: -16px;
             transition: 0.1s opacity ease-in-out;

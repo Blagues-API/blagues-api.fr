@@ -22,6 +22,7 @@
     animation: loader 1.4s infinite;
     border-radius: 100%;
     background-color: var(--primary);
+
     @keyframes loader {
       30% {
         transform: scale(0.75);
