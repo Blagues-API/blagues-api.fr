@@ -1,6 +1,9 @@
 {
-  "name": "nuxt-app",
-  "private": true,
+  "name": "blagues-api.fr",
+  "version": "2.0.0",
+  "description": "Site officiel de Blagues-API",
+  "author": "DraftMan",
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
