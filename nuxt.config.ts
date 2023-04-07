@@ -9,8 +9,14 @@ export default defineNuxtConfig({
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
     '@pinia/nuxt',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    '@sidebase/nuxt-auth'
   ],
+
+  auth: {
+    origin: process.env.BASE_URL,
+    defaultProvider: 'discord'
+  },
 
   vite: {
     plugins: [
@@ -21,6 +27,12 @@ export default defineNuxtConfig({
         css: false
       })
     ]
+  },
+
+  nitro: {
+    routeRules: {
+      '/api/regenerate': { proxy: `${process.env.API_URL}/api/regenerate` }
+    }
   },
 
   runtimeConfig: {

@@ -1,31 +1,49 @@
 <template>
   <header>
     <nuxt-link class="brand" to="/" title="Accueil">
-      <img src="@/assets/logo.svg?data" class="logo" alt="Logo Blagues-API" title="Logo Blagues-API">
+      <img
+        src="@/assets/logo.svg?data"
+        class="logo"
+        alt="Logo Blagues-API"
+        title="Logo Blagues-API"
+      >
       <h1 class="name">
         BLAGUES API
       </h1>
     </nuxt-link>
     <div class="overlay" :class="{ open }" @click="open = false" />
     <div class="navigation" :class="{ open }">
-      <a class="item" href="https://github.com/Blagues-API/blagues-api" title="Github de Blagues API"> GITHUB </a>
-      <a class="item" href="https://discord.gg/PPNpVaF" title="Discord de Blagues API"> DISCORD </a>
-      <!-- <nuxt-link v-if="$auth.loggedIn" class="user-place" to="/account">
+      <a
+        class="item"
+        href="https://github.com/Blagues-API/blagues-api"
+        title="Github de Blagues API"
+      >
+        GITHUB
+      </a>
+      <a
+        class="item"
+        href="https://discord.gg/PPNpVaF"
+        title="Discord de Blagues API"
+      >
+        DISCORD
+      </a>
+      <nuxt-link v-if="status === 'authenticated' && data" class="user-place" to="/account">
         <div
           class="avatar"
           :style="{
-            'background-image': `url(https://cdn.discordapp.com/avatars/${$auth.user.id}/${$auth.user.avatar}?size=64)`,
+            'background-image': `url(https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}?size=64)`,
           }"
         />
-        <span class="username">{{ $auth.user.username }}</span>
-      </nuxt-link> -->
-      <!-- <span
+        <span class="username">{{ data.user.username }}</span>
+      </nuxt-link>
+      <span
+        v-else
         class="item rounded"
         title="Connexion Discord"
-        @click="$auth.loginWith('discord', { params: { prompt: 'none' } })"
+        @click="signIn()"
       >
         CONNEXION
-      </span> -->
+      </span>
     </div>
     <div class="burger" :class="{ open }" @click="open = !open">
       <div class="burger-target">
@@ -34,20 +52,28 @@
         </div>
       </div>
       <a href="https://discord.gg/PPNpVaF" class="item"> <DiscordIcon /> </a>
-      <!-- <a
+      <a
+        v-if="status === 'authenticated' && data"
         class="item"
-        @click="$auth.loggedIn ? $router.push('/account') : $auth.loginWith('discord', { params: { prompt: 'none' } })"
+        @click="$router.push('/account')"
       >
         <div
-          v-if="$auth.loggedIn"
           class="mobile-avatar"
           :style="{
-            'background-image': `url(https://cdn.discordapp.com/avatars/${$auth.user.id}/${$auth.user.avatar}?size=64)`,
+            'background-image': `url(https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}?size=64)`,
           }"
         />
-        <LoginIcon v-else />
-      </a> -->
-      <a href="https://github.com/Blagues-API/blagues-api" class="item"> <GithubIcon /> </a>
+      </a>
+      <a
+        v-else
+        class="item"
+        @click="signIn()"
+      >
+        <LoginIcon />
+      </a>
+      <a href="https://github.com/Blagues-API/blagues-api" class="item">
+        <GithubIcon />
+      </a>
     </div>
   </header>
 </template>
@@ -55,7 +81,9 @@
 <script setup lang="ts">
 import GithubIcon from '@/assets/icons/github.svg?component'
 import DiscordIcon from '@/assets/icons/discord.svg?component'
-// import LoginIcon from '@/assets/icons/login.svg?inline'
+import LoginIcon from '@/assets/icons/login.svg?component'
+
+const { status, data, signIn } = useAuth()
 
 const open = ref(false)
 </script>
@@ -109,7 +137,8 @@ header {
       justify-content: center;
       width: 72px;
       height: 72px;
-      transition: transform 0.4s cubic-bezier(0.17, 0.9, 0.3, 1.3), box-shadow 0.4s ease-out;
+      transition: transform 0.4s cubic-bezier(0.17, 0.9, 0.3, 1.3),
+        box-shadow 0.4s ease-out;
       border-radius: 48px;
       background-color: white;
       box-shadow: 0 2px 20px rgb(0 0 0 / 50%);
@@ -133,13 +162,14 @@ header {
           &,
           &::after,
           &::before {
-            content: '';
+            content: "";
             display: block;
             position: absolute;
             right: 0;
             height: 5px;
             transform: rotate(0);
-            transition: 0.2s top 0.2s, right 0.2s, 0.2s transform, background-color 0.2s, width 0.2s;
+            transition: 0.2s top 0.2s, right 0.2s, 0.2s transform,
+              background-color 0.2s, width 0.2s;
             border-radius: 2.5px;
             background-color: var(--primary);
             pointer-events: none;
@@ -192,7 +222,8 @@ header {
           &,
           &::after,
           &::before {
-            transition: background-color 0.2s, 0.2s top, right 0.2s, 0.2s transform 0.2s, width 0.2s;
+            transition: background-color 0.2s, 0.2s top, right 0.2s,
+              0.2s transform 0.2s, width 0.2s;
           }
 
           &::before,

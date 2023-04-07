@@ -5,10 +5,9 @@
         <div class="language">
           VOTRE TOKEN
         </div>
-        <div ref="target" class="code">
+        <div v-if="auth" ref="target" class="code">
           <label class="overlay" for="copy" />
-          <!-- {{ $auth.user.token }} -->
-          AUTH MANQUANT
+          {{ auth.token }}
         </div>
         <div class="buttons">
           <button class="regerate" @click="regenerateToken()">
@@ -25,9 +24,13 @@
 
 <script setup lang="ts">
 
+import type { Session } from 'next-auth'
+
 definePageMeta({ middleware: 'auth' })
 
 const target = ref<HTMLDivElement | null>(null)
+
+const { data: auth } = useAuth()
 
 const copied = ref(false)
 
@@ -50,26 +53,28 @@ function copyToClipboard () {
 const regenerated = ref(false)
 
 async function regenerateToken () {
-  // const { data } = await useFetch(
-  //   '/api/regenerate',
-  //   {
-  //     method: 'POST',
-  //     body: { key: this.$auth.user.token_key },
-  //     headers: {
-  //       Authorization: `Bearer ${this.$auth.user.token}`,
-  //     },
-  //   },
-  // )
+  const authData = useState<Session>('auth:data')
 
-  // const { token, key } = data;
+  const regenerateData: { token: string; key: string } = await $fetch(
+    '/api/regenerate',
+    {
+      method: 'POST',
+      body: { key: authData.value.token_key },
+      headers: {
+        Authorization: `Bearer ${authData.value.token}`
+      }
+    }
+  )
 
-  // await this.$auth.setUser({ ...this.$auth.user, token, token_key: key })
+  if (!regenerateData) { return }
 
-  // regenerated.value = true
-  // setTimeout(() => {
-  //   regenerated.value = false
-  //   window.getSelection()?.removeAllRanges()
-  // }, 2000)
+  authData.value = { ...authData.value, ...regenerateData }
+
+  regenerated.value = true
+  setTimeout(() => {
+    regenerated.value = false
+    window.getSelection()?.removeAllRanges()
+  }, 2000)
 }
 </script>
 
