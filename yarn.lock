@@ -1595,10 +1595,10 @@
     consola "^2.15.3"
     defu "^5.0.0"
 
-"@nuxtjs/device@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-2.1.0.tgz#552c668b2d82dc982d18429845777c19d48d87d6"
-  integrity sha512-TYBdt1w2bmCCWp+MhgcBATZtqyUBi3nSdNpcLGILw5USLwCsC/yZtIkq9YisuEzuRnod9w/RZpoE80MxLftEuA==
+"@nuxtjs/device@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-2.2.0.tgz#6c1b1bc1241764f8fe6fb99a4f5c9143e809eafc"
+  integrity sha512-VI73LXFFPqGkyf3LLo9sbuiTjcRlBfG1CBt4kCTzslVhPNBkbLCBkcRzmuqW88RqDNDNYmvvHn1YjakP0smakg==
   dependencies:
     defu "^3.2.2"
 
