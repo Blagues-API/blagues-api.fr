@@ -32,13 +32,13 @@
       </div>
       <pre>
         <code class="language-javascript">
-          use Zuruuh/BlaguesApi\Factory\BlaguesApiFactory;
-          use Zuruuh/BlaguesApi\Model\Joke;
+          use BlaguesApi\BlaguesApi;
+          use BlaguesApi\Model\Joke;
         </code>
       </pre>
       <pre>
         <code class="language-javascript">
-          $blaguesApi = BlaguesApiFactory::create('<mark>VOTRE_TOKEN_ICI</mark>');
+          $blaguesApi = BlaguesApi::create('<mark>VOTRE_TOKEN_ICI</mark>');
         </code>
       </pre>
       <p class="text">
