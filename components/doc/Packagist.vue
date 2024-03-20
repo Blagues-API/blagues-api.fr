@@ -36,19 +36,19 @@
       </div>
       <pre>
         <code class="language-javascript">
-          use Blagues\BlaguesApi;
-          use Blagues\Models\Joke;
+          use BlaguesApi\BlaguesApi;
+          use BlaguesApi\Model\Joke;
         </code>
       </pre>
       <pre>
         <code class="language-javascript">
-          $blaguesApi = new BlaguesApi('<mark>VOTRE_TOKEN_ICI</mark>');
+          $blaguesApi = BlaguesApi::create('<mark>VOTRE_TOKEN_ICI</mark>');
         </code>
       </pre>
       <p class="text">
-        Il est fortement conseillé d'utiliser les variables d'environnement avec
-        <a href="https://packagist.org/packages/vlucas/phpdotenv">dotenv</a>
-        afin de ne pas mettre votre token dans le code source de votre projet.
+        Il est fortement conseillé d'utiliser les variables d'environnement avec un package comme
+        <a href="https://packagist.org/packages/symfony/dotenv">symfony/dotenv</a> par exemple, afin de ne pas mettre
+        votre token dans le code source de votre projet.
       </p>
       <p class="text" />
     </div>
@@ -57,8 +57,8 @@
         <h3 class="title">Utilisation</h3>
       </a>
       <p class="text">
-        Différentes méthodes synchrones vous sont rendues disponibles afin
-        d'intéragir plus facilement avec l'API depuis votre projet.
+        Différentes méthodes vous sont rendues disponibles afin d'intéragir plus facilement avec l'API depuis votre
+        projet.
       </p>
       <div id="random-joke" class="block">
         <a href="#random-joke" class="title-container">

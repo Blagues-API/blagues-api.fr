@@ -38,7 +38,7 @@
       </pre>
       <pre>
         <code class="language-javascript">
-          const blagues = BlaguesAPI("<mark>VOTRE_TOKEN_ICI</mark>")
+          blagues = BlaguesAPI("<mark>VOTRE_TOKEN_ICI</mark>")
         </code>
       </pre>
       <p class="text">
@@ -61,7 +61,7 @@
         </a>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.random()
+            blague = await blagues.random()
           </code>
         </pre>
         <p class="text">
@@ -69,7 +69,7 @@
         </p>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.random(disallow=[BlagueType.LIMIT, BlagueType.BEAUF])
+            blague = await blagues.random(disallow=[BlagueType.LIMIT, BlagueType.BEAUF])
           </code>
         </pre>
       </div>
@@ -79,7 +79,7 @@
         </a>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.random_categorized(BlagueType.DEV)
+            blague = await blagues.random_categorized(BlagueType.DEV)
           </code>
         </pre>
       </div>
@@ -93,7 +93,7 @@
         </p>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.from_id(50)
+            blague = await blagues.from_id(50)
           </code>
         </pre>
       </div>
@@ -103,7 +103,7 @@
         </a>
         <pre>
           <code class="language-javascript">
-            const blague = await blagues.count()
+            blague = await blagues.count()
           </code>
         </pre>
       </div>
