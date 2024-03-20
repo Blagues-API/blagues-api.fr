@@ -4,8 +4,12 @@
       <div class="content">
         <h2>Besoin d’une <b>API</b> de <b>blagues</b> françaises ?</h2>
         <div class="tags">
-          <div class="line"><span class="tag">#collaborative</span><span class="tag">#open-source</span></div>
-          <div class="line"><span class="tag">#communautaire</span><span class="tag">#français</span></div>
+          <div class="line">
+            <span class="tag">#collaborative</span><span class="tag">#open-source</span>
+          </div>
+          <div class="line">
+            <span class="tag">#communautaire</span><span class="tag">#français</span>
+          </div>
         </div>
         <div class="buttons">
           <button class="button npm" @click="scrollToDocs('npm')">
@@ -41,25 +45,40 @@
                 </p>
               </div>
             </transition>
-            <button class="next" @click="rerollJoke()">UNE AUTRE !</button>
+            <button class="next" @click="fetchJoke()">
+              UNE AUTRE !
+            </button>
           </div>
         </client-only>
       </transition>
     </div>
     <div class="sroller" @click="scrollToDocs()">
-      <div class="name">Documentation</div>
+      <div class="name">
+        Documentation
+      </div>
       <DownIcon />
     </div>
     <div ref="docs" class="bottom" />
   </section>
 </template>
 
-<script>
-import NpmIcon from '@/assets/icons/npm.svg?inline'
-import PyPiIcon from '@/assets/icons/pypi.svg?inline'
-import ApiIcon from '@/assets/icons/api.svg?inline'
-import DownIcon from '@/assets/icons/down.svg?inline'
-import PackagistIcon from '@/assets/icons/packagist.svg?inline'
+<script setup lang="ts">
+import { Doc, useDocStore } from '~/store/documentation'
+
+import NpmIcon from '@/assets/icons/npm.svg?component'
+import PyPiIcon from '@/assets/icons/pypi.svg?component'
+import ApiIcon from '@/assets/icons/api.svg?component'
+import DownIcon from '@/assets/icons/down.svg?component'
+import PackagistIcon from '@/assets/icons/packagist.svg?component'
+
+type JokeType = 'limit' | 'global' | 'dark' | 'dev' | 'beauf' | 'blondes';
+
+interface Joke {
+  id: number;
+  type: JokeType;
+  joke: string;
+  answer: string;
+}
 
 const jokesTypes = {
   limit: 'Blague 18+',
@@ -67,48 +86,39 @@ const jokesTypes = {
   dark: 'Blague humour noir',
   dev: 'Blague de développeurs',
   beauf: 'Humour de beaufs',
-  blondes: 'Blagues blondes',
+  blondes: 'Blagues blondes'
 }
 
-export default {
-  components: {
-    NpmIcon,
-    PyPiIcon,
-    ApiIcon,
-    DownIcon,
-    PackagistIcon,
-  },
-  data() {
-    return {
-      jokesTypes,
-      joke: null,
+const joke = ref<Joke | null>(null)
+const docs = ref<HTMLDivElement | null>(null)
+
+const config = useRuntimeConfig()
+
+async function fetchJoke () {
+  const data = await $fetch<Joke>('/api/random', {
+    headers: {
+      Authorization: `Bearer ${config.public.apiToken}`
     }
-  },
-  async fetch() {
-    this.joke = await this.$axios.$get(`/api/random`, {
-      headers: {
-        Authorization: `Bearer ${this.$config.apiToken}`,
-      },
-    })
-  },
-  methods: {
-    async rerollJoke() {
-      this.joke = await this.$axios.$get(`/api/random`, {
-        headers: {
-          Authorization: `Bearer ${this.$config.apiToken}`,
-        },
-      })
-    },
-    scrollToDocs(doc) {
-      if (doc) this.$store.commit('SET_DOC', doc)
-      const rect = this.$refs.docs.getBoundingClientRect()
-      window.scroll({
-        top: window.pageYOffset + rect.top - rect.height + (this.$device.isMobile ? 96 : 0),
-        left: 0,
-        behavior: 'smooth',
-      })
-    },
-  },
+  })
+  if (!data) { return }
+
+  joke.value = data
+}
+
+const { setDoc } = useDocStore()
+const { isMobile } = useDevice()
+
+function scrollToDocs (value?: Doc) {
+  if (value) { setDoc(value) }
+
+  if (!docs.value) { return }
+
+  const rect = docs.value.getBoundingClientRect()
+  window.scroll({
+    top: window.scrollY + rect.top - rect.height + (isMobile ? 96 : 0),
+    left: 0,
+    behavior: 'smooth'
+  })
 }
 </script>
 
@@ -344,6 +354,7 @@ export default {
     position: absolute;
     bottom: 0;
   }
+
   @media (max-width: 680px) {
     min-height: 0;
     padding: 64px 48px;

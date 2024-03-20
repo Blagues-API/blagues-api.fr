@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="selector"
     tabindex="0"
     class="selector"
     :class="{ active }"
@@ -12,8 +13,8 @@
     @keyup.esc="deactivate()"
   >
     <div class="select-element">
-      <div class="element">
-        <img class="icon" :src="selected.icon" :alt="selected.name" />
+      <div v-if="selected" class="element">
+        <component :is="selected.icon" class="icon" />
         <span :style="{ color: selected.color }">{{ selected.name }}</span>
       </div>
       <DownIcon class="down" />
@@ -35,118 +36,123 @@
         @click="select(element.id)"
         @mouseenter.self="pointer = index"
       >
-        <img :src="element.icon" :alt="element.name" />
+        <component :is="element.icon" />
         <span :style="{ color: element.color }">{{ element.name }}</span>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import DownIcon from '@/assets/icons/down.svg?inline'
-import NpmIcon from '@/assets/icons/npm_full.svg'
-import PypiIcon from '@/assets/icons/pypi_full.svg'
-import PackagistIcon from '@/assets/icons/packagist.svg'
-import ApiIcon from '@/assets/icons/api_full.svg'
+<script setup lang="ts">
+import { FunctionalComponent, SVGAttributes } from 'vue'
+import { useDocStore, Doc } from '~/store/documentation'
 
-export default {
-  name: 'Selector',
-  components: {
-    DownIcon,
-  },
-  data() {
-    return {
-      active: false,
-      pointer: 0,
-      elements: [
-        {
-          id: 'npm',
-          name: 'NPM',
-          color: '#cb3837',
-          icon: NpmIcon,
-        },
-        {
-          id: 'pypi',
-          name: 'PYPI',
-          color: '#3775a9',
-          icon: PypiIcon,
-        },
-        {
-          id: 'packagist',
-          name: 'PACKAGIST',
-          color: '#f28d1a',
-          icon: PackagistIcon,
-        },
-        {
-          id: 'api',
-          name: 'API',
-          color: '#3f3f3f',
-          icon: ApiIcon,
-        },
-      ],
-    }
-  },
-  computed: {
-    selected() {
-      const doc = this.$store.state.doc
-      return this.elements.find((element) => element.id === doc)
-    },
-    pointerPosition() {
-      return this.pointer * 46
-    },
-  },
-  methods: {
-    toggle() {
-      this.active ? this.deactivate() : this.activate()
-    },
-    activate() {
-      if (this.active || this.disabled) {
-        return
-      }
+import DownIcon from '@/assets/icons/down.svg?component'
+import NpmIcon from '@/assets/icons/npm_full.svg?component'
+import PypiIcon from '@/assets/icons/pypi_full.svg?component'
+import PackagistIcon from '@/assets/icons/packagist.svg?component'
+import ApiIcon from '@/assets/icons/api_full.svg?component'
 
-      this.active = true
-
-      this.$el.focus()
-    },
-    deactivate() {
-      if (!this.active) {
-        return
-      }
-
-      this.active = false
-
-      this.$el.blur()
-    },
-    pointerForward() {
-      if (this.pointer < this.elements.length - 1) {
-        this.pointer++
-
-        if (this.$refs.list.scrollTop <= this.pointerPosition - (330 / 46 - 1) * 46) {
-          this.$refs.list.scrollTop = this.pointerPosition - (330 / 46 - 1) * 46
-        }
-      }
-    },
-    pointerBackward() {
-      if (this.pointer > 0) {
-        this.pointer--
-
-        if (this.$refs.list.scrollTop >= this.pointerPosition) {
-          this.$refs.list.scrollTop = this.pointerPosition
-        }
-      }
-    },
-    addPointerElement() {
-      if (this.elements.length > 0) {
-        this.select(this.elements[this.pointer].id)
-      }
-      this.pointer = 0
-    },
-    select(elementId) {
-      this.deactivate()
-      this.$store.commit('SET_DOC', elementId)
-    },
-  },
+interface SelectorElement {
+  id: Doc;
+  name: string;
+  color: string;
+  icon: FunctionalComponent<SVGAttributes>;
 }
+
+const active = ref(false)
+const list = ref<HTMLDivElement | null>(null)
+const selector = ref<HTMLDivElement | null>(null)
+
+const pointer = ref(0)
+const elements: SelectorElement[] = [
+  {
+    id: 'npm',
+    name: 'NPM',
+    color: '#cb3837',
+    icon: NpmIcon
+  },
+  {
+    id: 'pypi',
+    name: 'PYPI',
+    color: '#3775a9',
+    icon: PypiIcon
+  },
+  {
+    id: 'packagist',
+    name: 'PACKAGIST',
+    color: '#f28d1a',
+    icon: PackagistIcon
+  },
+  {
+    id: 'api',
+    name: 'API',
+    color: '#3f3f3f',
+    icon: ApiIcon
+  }
+]
+
+const { doc, setDoc } = useDocStore()
+
+const selected = computed(() => {
+  return elements.find(element => element.id === doc)
+})
+
+function deactivate () {
+  if (!active.value) {
+    return
+  }
+
+  active.value = false
+
+  if (selector.value) { selector.value.blur() }
+}
+
+function activate () {
+  if (active.value) { return }
+
+  active.value = true
+
+  if (selector.value) { selector.value.focus() }
+}
+
+function select (elementId: Doc) {
+  deactivate()
+
+  setDoc(elementId)
+}
+
+const pointerPosition = computed(() => {
+  return pointer.value * 46
+})
+
+function pointerForward () {
+  if (pointer.value < elements.length - 1) {
+    pointer.value++
+
+    if (list.value && list.value.scrollTop <= pointerPosition.value - (330 / 46 - 1) * 46) {
+      list.value.scrollTop = pointerPosition.value - (330 / 46 - 1) * 46
+    }
+  }
+}
+
+function pointerBackward () {
+  if (pointer.value > 0) {
+    pointer.value--
+
+    if (list.value && list.value.scrollTop >= pointerPosition.value) {
+      list.value.scrollTop = pointerPosition.value
+    }
+  }
+}
+
+function addPointerElement () {
+  if (elements.length > 0) {
+    select(elements[pointer.value].id)
+  }
+  pointer.value = 0
+}
+
 </script>
 
 <style lang="scss">

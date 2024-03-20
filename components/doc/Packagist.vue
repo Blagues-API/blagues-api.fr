@@ -2,12 +2,16 @@
   <div>
     <div id="php" class="block">
       <div class="flex-space top">
-        <h2 class="title">Module Packagist</h2>
+        <h2 class="title">
+          Module Packagist
+        </h2>
       </div>
       <p>
-        Le module Packagist de <a href="https://github.com/Blagues-API/blagues-api-php">Blagues-API</a> supporte
-        l'intégralité des options présente sur l'API, il permettra d'intéragir simplement avec l'API depuis le langage
-        PHP de manière synchrone.
+        Le module Packagist de
+        <a href="https://github.com/Blagues-API/blagues-api-php">Blagues-API</a>
+        supporte l'intégralité des options présente sur l'API, il permettra
+        d'intéragir simplement avec l'API depuis le langage PHP de manière
+        synchrone.
       </p>
     </div>
     <div id="install" class="block">
@@ -46,7 +50,7 @@
         <a href="https://packagist.org/packages/symfony/dotenv">symfony/dotenv</a> par exemple, afin de ne pas mettre
         votre token dans le code source de votre projet.
       </p>
-      <p class="text"></p>
+      <p class="text" />
     </div>
     <div id="use" class="block">
       <a href="#use" class="title-container">
@@ -65,7 +69,10 @@
             $joke = $blaguesApi->getRandom();
           </code>
         </pre>
-        <p class="text">A cette méthode, vous pouvez spécifier certains types que vous ne souhaitez pas recevoir.</p>
+        <p class="text">
+          A cette méthode, vous pouvez spécifier certains types que vous ne
+          souhaitez pas recevoir.
+        </p>
         <pre>
           <code class="language-javascript">
             $joke = $blaguesApi->getRandom([Joke::TYPE_DARK]);
@@ -86,7 +93,7 @@
         <a href="#joke-by-id" class="title-container">
           <h4 class="title">Blague à partir de son ID</h4>
         </a>
-        <p class="text"></p>
+        <p class="text" />
         <pre>
           <code class="language-javascript">
             $joke = $blaguesApi->getById(1234);

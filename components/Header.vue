@@ -1,27 +1,46 @@
 <template>
   <header>
     <nuxt-link class="brand" to="/" title="Accueil">
-      <Logo class="logo" />
-      <h1 class="name">BLAGUES API</h1>
+      <img
+        src="@/assets/logo.svg?data"
+        class="logo"
+        alt="Logo Blagues-API"
+        title="Logo Blagues-API"
+      >
+      <h1 class="name">
+        BLAGUES API
+      </h1>
     </nuxt-link>
     <div class="overlay" :class="{ open }" @click="open = false" />
     <div class="navigation" :class="{ open }">
-      <a class="item" href="https://github.com/Blagues-API/blagues-api" title="Github de Blagues API"> GITHUB </a>
-      <a class="item" href="https://discord.gg/PPNpVaF" title="Discord de Blagues API"> DISCORD </a>
-      <nuxt-link v-if="$auth.loggedIn" class="user-place" to="/account">
+      <a
+        class="item"
+        href="https://github.com/Blagues-API/blagues-api"
+        title="Github de Blagues API"
+      >
+        GITHUB
+      </a>
+      <a
+        class="item"
+        href="https://discord.gg/PPNpVaF"
+        title="Discord de Blagues API"
+      >
+        DISCORD
+      </a>
+      <nuxt-link v-if="status === 'authenticated' && data" class="user-place" to="/account">
         <div
           class="avatar"
           :style="{
-            'background-image': `url(https://cdn.discordapp.com/avatars/${$auth.user.id}/${$auth.user.avatar}?size=64)`,
+            'background-image': `url(https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}?size=64)`,
           }"
         />
-        <span class="username">{{ $auth.user.username }}</span>
+        <span class="username">{{ data.user.username }}</span>
       </nuxt-link>
       <span
         v-else
         class="item rounded"
         title="Connexion Discord"
-        @click="$auth.loginWith('discord', { params: { prompt: 'none' } })"
+        @click="signIn()"
       >
         CONNEXION
       </span>
@@ -34,42 +53,39 @@
       </div>
       <a href="https://discord.gg/PPNpVaF" class="item"> <DiscordIcon /> </a>
       <a
+        v-if="status === 'authenticated' && data"
         class="item"
-        @click="$auth.loggedIn ? $router.push('/account') : $auth.loginWith('discord', { params: { prompt: 'none' } })"
+        @click="$router.push('/account')"
       >
         <div
-          v-if="$auth.loggedIn"
           class="mobile-avatar"
           :style="{
-            'background-image': `url(https://cdn.discordapp.com/avatars/${$auth.user.id}/${$auth.user.avatar}?size=64)`,
+            'background-image': `url(https://cdn.discordapp.com/avatars/${data.user.id}/${data.user.avatar}?size=64)`,
           }"
         />
-        <LoginIcon v-else />
       </a>
-      <a href="https://github.com/Blagues-API/blagues-api" class="item"> <GithubIcon /> </a>
+      <a
+        v-else
+        class="item"
+        @click="signIn()"
+      >
+        <LoginIcon />
+      </a>
+      <a href="https://github.com/Blagues-API/blagues-api" class="item">
+        <GithubIcon />
+      </a>
     </div>
   </header>
 </template>
 
-<script>
-import Logo from '@/assets/logo.svg?inline'
-import GithubIcon from '@/assets/icons/github.svg?inline'
-import DiscordIcon from '@/assets/icons/discord.svg?inline'
-import LoginIcon from '@/assets/icons/login.svg?inline'
+<script setup lang="ts">
+import GithubIcon from '@/assets/icons/github.svg?component'
+import DiscordIcon from '@/assets/icons/discord.svg?component'
+import LoginIcon from '@/assets/icons/login.svg?component'
 
-export default {
-  components: {
-    Logo,
-    GithubIcon,
-    DiscordIcon,
-    LoginIcon,
-  },
-  data() {
-    return {
-      open: false,
-    }
-  },
-}
+const { status, data, signIn } = useAuth()
+
+const open = ref(false)
 </script>
 
 <style lang="scss">
@@ -112,6 +128,7 @@ header {
     bottom: 16px;
     width: 72px;
     height: 72px;
+
     .burger-target {
       display: flex;
       position: absolute;
@@ -120,10 +137,11 @@ header {
       justify-content: center;
       width: 72px;
       height: 72px;
-      transition: transform 0.4s cubic-bezier(0.17, 0.9, 0.3, 1.3), box-shadow 0.4s ease-out;
+      transition: transform 0.4s cubic-bezier(0.17, 0.9, 0.3, 1.3),
+        box-shadow 0.4s ease-out;
       border-radius: 48px;
       background-color: white;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 2px 20px rgb(0 0 0 / 50%);
       cursor: pointer;
 
       .burger-icon {
@@ -144,13 +162,14 @@ header {
           &,
           &::after,
           &::before {
-            content: '';
+            content: "";
             display: block;
             position: absolute;
             right: 0;
             height: 5px;
             transform: rotate(0);
-            transition: 0.2s top 0.2s, right 0.2s, 0.2s transform, background-color 0.2s, width 0.2s;
+            transition: 0.2s top 0.2s, right 0.2s, 0.2s transform,
+              background-color 0.2s, width 0.2s;
             border-radius: 2.5px;
             background-color: var(--primary);
             pointer-events: none;
@@ -170,6 +189,7 @@ header {
         }
       }
     }
+
     .item {
       display: flex;
       position: absolute;
@@ -189,18 +209,21 @@ header {
         background-size: 32px;
       }
     }
+
     &.open {
       .burger-target {
         transform: scale(0.8);
         transform: transform 0.2s linear;
-        box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 1px 8px rgb(0 0 0 / 50%);
+
         .burger-lines {
           background-color: transparent;
 
           &,
           &::after,
           &::before {
-            transition: background-color 0.2s, 0.2s top, right 0.2s, 0.2s transform 0.2s, width 0.2s;
+            transition: background-color 0.2s, 0.2s top, right 0.2s,
+              0.2s transform 0.2s, width 0.2s;
           }
 
           &::before,
@@ -219,17 +242,21 @@ header {
           }
         }
       }
+
       .item {
         transition-timing-function: cubic-bezier(0.95, 0, 0.35, 1.3);
-        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 12px rgb(0 0 0 / 30%);
+
         &:nth-child(2) {
           transform: translate3d(-96px, 0, 0);
           transition-duration: 0.2s;
         }
+
         &:nth-child(3) {
           transform: translate3d(-72px, -72px, 0);
           transition-duration: 0.3s;
         }
+
         &:nth-child(4) {
           transform: translate3d(0, -96px, 0);
           transition-duration: 0.4s;
@@ -281,6 +308,7 @@ header {
       }
     }
   }
+
   @media screen and (max-width: 720px) {
     .burger {
       display: flex;

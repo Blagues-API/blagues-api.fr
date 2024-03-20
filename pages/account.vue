@@ -2,10 +2,12 @@
   <div class="container token-page">
     <div class="card">
       <div class="token">
-        <div class="language">VOTRE TOKEN</div>
-        <div ref="target" class="code">
-          <label class="overlay" for="copy"></label>
-          {{ $auth.user.token }}
+        <div class="language">
+          VOTRE TOKEN
+        </div>
+        <div v-if="auth" ref="target" class="code">
+          <label class="overlay" for="copy" />
+          {{ auth.token }}
         </div>
         <div class="buttons">
           <button class="regerate" @click="regenerateToken()">
@@ -20,50 +22,59 @@
   </div>
 </template>
 
-<script>
-export default {
-  middleware: ['auth'],
-  data() {
-    return {
-      copied: false,
-      regenerated: false,
+<script setup lang="ts">
+
+import type { Session } from 'next-auth'
+
+definePageMeta({ middleware: 'auth' })
+
+const target = ref<HTMLDivElement | null>(null)
+
+const { data: auth } = useAuth()
+
+const copied = ref(false)
+
+function copyToClipboard () {
+  if (!target.value) { return }
+
+  window.getSelection()?.removeAllRanges()
+  const range = document.createRange()
+  range.selectNode(target.value)
+  window.getSelection()?.addRange(range)
+  document.execCommand('copy')
+
+  copied.value = true
+  setTimeout(() => {
+    copied.value = false
+    window.getSelection()?.removeAllRanges()
+  }, 2000)
+}
+
+const regenerated = ref(false)
+
+async function regenerateToken () {
+  const authData = useState<Session>('auth:data')
+
+  const regenerateData: { token: string; key: string } = await $fetch(
+    '/api/regenerate',
+    {
+      method: 'POST',
+      body: { key: authData.value.token_key },
+      headers: {
+        Authorization: `Bearer ${authData.value.token}`
+      }
     }
-  },
-  methods: {
-    copyToClipboard() {
-      window.getSelection().removeAllRanges()
-      const range = document.createRange()
-      range.selectNode(this.$refs.target)
-      window.getSelection().addRange(range)
-      document.execCommand('copy')
-      this.copied = true
-      setTimeout(() => {
-        this.copied = false
-        window.getSelection().removeAllRanges()
-      }, 2000)
-    },
-    async regenerateToken() {
-      const { token, key } = await this.$axios.$post(
-        '/api/regenerate',
-        {
-          key: this.$auth.user.token_key,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${this.$auth.user.token}`,
-          },
-        }
-      )
+  )
 
-      await this.$auth.setUser({ ...this.$auth.user, token, token_key: key })
+  if (!regenerateData) { return }
 
-      this.regenerated.value = true
-      setTimeout(() => {
-        this.regenerated.value = false
-        window.getSelection().removeAllRanges()
-      }, 2000)
-    },
-  },
+  authData.value = { ...authData.value, ...regenerateData }
+
+  regenerated.value = true
+  setTimeout(() => {
+    regenerated.value = false
+    window.getSelection()?.removeAllRanges()
+  }, 2000)
 }
 </script>
 
@@ -73,6 +84,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 40px;
+
   @media (max-width: 420px) {
     padding: 40px 20px;
   }
@@ -127,10 +139,7 @@ export default {
         .overlay {
           content: '';
           position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          left: 0;
+          inset: 0;
           cursor: pointer;
         }
 

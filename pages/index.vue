@@ -5,11 +5,6 @@
   </div>
 </template>
 
-<script>
-export default {
-  async asyncData({ $axios }) {
-    const { count } = await $axios.$get(`/api/count`)
-    return { count }
-  },
-}
+<script setup>
+const { data: count } = await useFetch('/api/count')
 </script>

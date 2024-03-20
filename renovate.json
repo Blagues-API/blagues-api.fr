@@ -6,22 +6,18 @@
   "rangeStrategy": "bump",
   "assignees": ["DraftProducts"],
   "npm": {
-    "commitMessageTopic": "{{prettyDepType}} {{depName}}",
-    "packageRules": [
-      {
-        "matchPackagePatterns": ["eslint", "prettier", "stylelint", "commitlint", "lint-staged", "husky"],
-        "groupName": "Devtools Dependencies"
-      },
-      {
-        "matchUpdateTypes": ["minor", "patch"],
-        "matchCurrentVersion": "!/^0/",
-        "automerge": true
-      }
-    ]
+    "commitMessageTopic": "{{prettyDepType}} {{depName}}"
   },
-  "baseBranches": ["master"],
-  "ignoreDeps": ["core-js", "sass", "sass-loader"],
-  "lockFileMaintenance": {
-    "enabled": true
-  }
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["eslint", "stylelint", "commitlint", "lint-staged", "husky"],
+      "groupName": "Devtools Dependencies"
+    },
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ],
+  "baseBranches": ["master"]
 }

@@ -1,5 +1,9 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-property-sort-order-smacss', 'stylelint-config-prettier'],
+  extends: [
+    'stylelint-config-standard-scss',
+    'stylelint-config-standard-vue/scss',
+    'stylelint-config-property-sort-order-smacss'
+  ],
   // add your custom config here
   // https://stylelint.io/user-guide/configuration
   rules: {
@@ -9,8 +13,8 @@ module.exports = {
     'block-no-empty': [
       true,
       {
-        severity: 'warning',
-      },
-    ],
-  },
+        severity: 'warning'
+      }
+    ]
+  }
 }
